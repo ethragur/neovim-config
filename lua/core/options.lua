@@ -16,7 +16,9 @@ opt.mouse = 'a'                       -- Enable mouse support
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
-opt.ttimeoutlen= 5
+opt.ttimeout = true
+opt.ttimeoutlen = 5
+opt.timeoutlen = 500
 
 -----------------------------------------------------------
 -- Neovim UI
@@ -25,7 +27,6 @@ opt.number = true           -- Show line number
 opt.relativenumber = true
 opt.showmatch = true        -- Highlight matching parenthesis
 opt.foldmethod = 'marker'   -- Enable folding (default 'foldmarker')
-opt.colorcolumn = '80'      -- Line lenght marker at 80 columns
 opt.splitright = true       -- Vertical split to the right
 opt.splitbelow = true       -- Horizontal split to the bottom
 opt.ignorecase = true       -- Ignore case letters when search
