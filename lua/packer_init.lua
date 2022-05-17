@@ -53,14 +53,6 @@ return packer.startup(function(use)
   -- Indent line
   use 'lukas-reineke/indent-blankline.nvim'
 
-  -- Autopair
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup()
-    end
-  }
-
   -- Icons
   use 'kyazdani42/nvim-web-devicons'
 
