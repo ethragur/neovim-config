@@ -82,6 +82,9 @@ return packer.startup(function(use)
     },
   }
 
+  -- Additional rust hints
+  use 'simrat39/rust-tools.nvim'
+
   -- Statusline
   use {
     'famiu/feline.nvim',

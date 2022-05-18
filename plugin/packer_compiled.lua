@@ -170,6 +170,11 @@ _G.packer_plugins = {
     path = "/home/effi/.local/share/nvim/site/pack/packer/start/rose-pine",
     url = "https://github.com/rose-pine/neovim"
   },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/home/effi/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
+  },
   tagbar = {
     loaded = true,
     path = "/home/effi/.local/share/nvim/site/pack/packer/start/tagbar",

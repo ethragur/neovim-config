@@ -114,6 +114,24 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 
 --]]
 
+local opts = {
+	tools = { -- rust-tools options
+		-- automatically set inlay hints (type hints)
+		-- There is an issue due to which the hints are not applied on the first
+		-- opened file. For now, write to the file to trigger a reapplication of
+		-- the hints or just run :RustSetInlayHints.
+		-- default: true
+		autoSetHints = true,
+
+		-- whether to show hover actions inside the hover window
+		-- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
+		-- default: true
+		hover_with_actions = true,
+  }
+}
+-- Setup more rust tools (automatically sets up rust analyzer )
+require('rust-tools').setup(opts)
+
 -- Define `root_dir` when needed
 -- See: https://github.com/neovim/nvim-lspconfig/issues/320
 -- This is a workaround, maybe not work with some servers.
@@ -124,7 +142,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'ansiblels', 'gdscript', 'gopls', 'jsonls', 'psalm', 'rust_analyzer', 'vuels' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'ansiblels', 'gdscript', 'gopls', 'jsonls', 'psalm', 'vuels' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
