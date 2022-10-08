@@ -62,13 +62,18 @@ return packer.startup(function(use)
   -- Treesitter interface
   use 'nvim-treesitter/nvim-treesitter'
 
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
   -- Color schemes
   use 'navarasu/onedark.nvim'
   use 'tanvirtin/monokai.nvim'
   use { 'rose-pine/neovim', as = 'rose-pine' }
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
+  use {
+    'neovim/nvim-lspconfig',
+    "williamboman/nvim-lsp-installer",
+  }
 
   -- Autocomplete
   use {
@@ -84,6 +89,9 @@ return packer.startup(function(use)
 
   -- Additional rust hints
   use 'simrat39/rust-tools.nvim'
+
+  -- nickel syntax highlighting
+  use 'nickel-lang/vim-nickel'
 
   -- Statusline
   use {
@@ -111,6 +119,12 @@ return packer.startup(function(use)
     'romgrk/barbar.nvim',
     requires = {'kyazdani42/nvim-web-devicons'}
   }
+
+  use {
+    'ron-rs/ron.vim'
+  }
+
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

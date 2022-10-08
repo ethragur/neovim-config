@@ -25,6 +25,9 @@ vim.diagnostic.config({ virtual_text = true })
 vim.cmd([[
   autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, { focus = false })
 ]])
+vim.cmd[[
+  au BufRead,BufNewFile *.wgsl	set filetype=wgsl
+]]
 
 -- Add additional capabilities supported by nvim-cmp
 -- See: https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
@@ -114,6 +117,17 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 
 --]]
 
+require("nvim-lsp-installer").setup({
+    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
+
 local opts = {
 	tools = { -- rust-tools options
 		-- automatically set inlay hints (type hints)
@@ -139,10 +153,11 @@ local root_dir = function()
   return vim.fn.getcwd()
 end
 
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'ansiblels', 'gdscript', 'gopls', 'jsonls', 'psalm', 'vuels' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'ansiblels', 'gdscript', 'gopls', 'jsonls', 'psalm', 'vuels', 'nickel_ls' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -156,3 +171,13 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+
+-- omnisharp lsp config
+require'lspconfig'.omnisharp.setup {
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  on_attach = function(_, bufnr)
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  end,
+  cmd = { "/home/effi/.dotnet/omnisharp/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(pid) },
+}

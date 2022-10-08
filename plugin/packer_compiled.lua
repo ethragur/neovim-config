@@ -135,6 +135,11 @@ _G.packer_plugins = {
     path = "/home/effi/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/home/effi/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/effi/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
@@ -165,6 +170,11 @@ _G.packer_plugins = {
     path = "/home/effi/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["ron.vim"] = {
+    loaded = true,
+    path = "/home/effi/.local/share/nvim/site/pack/packer/start/ron.vim",
+    url = "https://github.com/ron-rs/ron.vim"
+  },
   ["rose-pine"] = {
     loaded = true,
     path = "/home/effi/.local/share/nvim/site/pack/packer/start/rose-pine",
@@ -179,6 +189,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/effi/.local/share/nvim/site/pack/packer/start/tagbar",
     url = "https://github.com/preservim/tagbar"
+  },
+  ["vim-nickel"] = {
+    loaded = true,
+    path = "/home/effi/.local/share/nvim/site/pack/packer/start/vim-nickel",
+    url = "https://github.com/nickel-lang/vim-nickel"
   }
 }
 
