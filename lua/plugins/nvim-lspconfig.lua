@@ -157,7 +157,7 @@ end
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
 -- Add your language server below:
-local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'ansiblels', 'gdscript', 'gopls', 'jsonls', 'psalm', 'vuels', 'nickel_ls' }
+local servers = { 'bashls', 'pyright', 'clangd', 'html', 'cssls', 'tsserver', 'ansiblels', 'gdscript', 'gopls', 'jsonls', 'psalm', 'vuels', 'nickel_ls', 'texlab' }
 
 -- Call setup
 for _, lsp in ipairs(servers) do
@@ -181,3 +181,27 @@ require'lspconfig'.omnisharp.setup {
   end,
   cmd = { "/home/effi/.dotnet/omnisharp/OmniSharp.exe", "--languageserver" , "--hostPID", tostring(pid) },
 }
+
+require'lspconfig'.texlab.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    texlab = {
+      build = {
+        executable = "tectonic",
+        onSave = true,
+        args = { "-X", "compile", "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
+        forwardSearchAfter = true,
+      },
+      chktex = {
+        onOpenAndSave = true,
+      },
+      forwardSearch = {
+        executable = "zathura",
+        args = { "--synctex-forward", "%l:1:%f", "%p" },
+      },
+    },
+  },
+})
+
+
